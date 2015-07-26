@@ -5,13 +5,7 @@
 </head>
 <body>
 <?php
-
-function pwd_hash($a) {
-	 $salt="Random_KUGBJVY";  //定义一个salt值，程序员规定下来的随机字符串
-	 $b=$a.$salt;  //把密码和salt连接
-	 $b=md5($b);  //执行MD5散列
-	 return $b;  //返回散列    
-}
+include('common.php');
 
 	if(isset($_POST["Submit"]) && $_POST["Submit"] == "注册")
 	{
@@ -45,7 +39,7 @@ function pwd_hash($a) {
 					//$num_insert = mysql_num_rows($res_insert);
 					if($res_insert)
 					{
-						echo "<script>alert('注册成功！');</script>";
+                                          echo "<script>alert('注册成功！');location.href='login.php';</script>";
 					}
 					else
 					{
