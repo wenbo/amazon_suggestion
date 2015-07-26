@@ -10,7 +10,7 @@
 		else
 		{
 			mysql_connect("localhost","root","");
-			mysql_select_db("vt");
+			mysql_select_db("amazon_suggestion");
 			mysql_query("set names 'gbk'");
 			$sql = "select id,username,password from user where username = '$_POST[username]' and password = '$_POST[password]'";
 			$result = mysql_query($sql);
