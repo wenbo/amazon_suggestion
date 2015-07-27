@@ -1,7 +1,7 @@
 <?php
 include('common.php');
 
-	if(isset($_POST["submit"]) && $_POST["submit"] == "登陆")
+	if(isset($_POST["submit"]) && $_POST["submit"] == "Login")
 	{
 		$email = $_POST["email"];
 		$psw = $_POST["password"];
