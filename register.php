@@ -4,6 +4,12 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
+<?php
+	 session_start();
+	 if($_SESSION['is_admin'] != 1){
+		 header("Location:login.php");
+	 }
+?>
 <form action="regcheck.php" method="post">
 	Email：<input type="text" name="email"/>
     <br/>

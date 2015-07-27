@@ -21,6 +21,7 @@ $row = mysql_fetch_array($user_query);
 echo '用户信息：<br />';
 echo '用户ID：',$userid,'<br />';
 echo '用户名：',$email,'<br />';
+echo 'is_admin：',$_SESSION['is_admin'],'<br />';
 echo '<a href="login.php?action=logout">注销</a> 登录<br />';
 ?>
 </body>

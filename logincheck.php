@@ -15,7 +15,7 @@ include('common.php');
 			mysql_select_db("amazon_suggestion");
                         mysql_query("set names 'gbk'");
                         $encryped = pwd_hash($psw);
-                        $sql = "select id,email,password from users where email = '$_POST[email]' and password = '$encryped'";
+                        $sql = "select id,email,is_admin from users where email = '$_POST[email]' and password = '$encryped'";
 			$result = mysql_query($sql);
 			$num = mysql_num_rows($result);
 			if($num)
@@ -24,6 +24,7 @@ include('common.php');
 				session_start(); 
 				$_SESSION['userid'] = $row[0];  
 				$_SESSION['email'] = $row[1];  
+				$_SESSION['is_admin'] = $row[2];  
 				header("Location:my.php");
 				echo $row[0];
 			}
