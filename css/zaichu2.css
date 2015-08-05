@@ -1,0 +1,80 @@
+a{
+text-decoration:none;
+color:blue;
+}
+a:hover{
+background-color:#dddddd;
+color:#000000;
+}
+
+.Cate{
+font-weight:bolder;
+margin:10px;
+
+}
+
+div.Cates{
+margin:10px;
+border:solid blue 1px;
+padding:10px;
+
+}
+
+span.keys{
+margin:5px 0 5px 0px;
+background:#f0f0f0;
+
+}
+
+span.matomete{
+
+margin:10px;
+background:#f0f0f0;
+font-weight:bolder;
+}
+
+.tbox{
+width:100%;
+}
+
+div.ilt{
+	width:160px;
+	padding:5px;
+	border :solid silver 1px ;
+	float:left;
+	
+}
+div.ilt_last{
+	width:120px;
+	padding:5px;
+	border :solid silver 1px ;
+	float:none;
+	
+}
+
+.orange_bt {
+       /* 背景のグラデーション*/
+	background: -moz-linear-gradient(top, #F9934F, #aa5221);
+   background-image: -webkit-gradient(linear, left top, left bottom, from(#F9934F), to(#aa5221));
+ 
+	padding: 5px 10px 5px;
+	color: #fff;
+	text-decoration: none;
+       
+       /* ボタンの角を丸くする*/
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+ 
+        /* ボタンに影をつける */
+       /* 最初の3つのピクセルの指定は、初めが指定したピクセル分横にドロップシャドウ*/
+       /* 次が下にドロップシャドウするピクセル　次がドロップシャドウの幅　*/      /* rgbaの値の最初の3文字はRGBの指定、最後はアルファ値　*/
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.6);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.6); 
+ 
+       /* テキストへの影 */
+        text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+
+	border:solid 1px #aa5221;
+	cursor: pointer;
+	font-size:14px;
+}

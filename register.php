@@ -31,12 +31,6 @@
 
 	</head>
 	<body>
-		<?php
-			 session_start();
-			 if($_SESSION['is_admin'] != 1){
-			 header("Location:login.php");
-			 }
-			 ?>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">
@@ -54,7 +48,7 @@
 										<input class="form-control" placeholder="password" type="password" name="password"/>
 									</div>
 									<div class="form-group">
-										<input class="form-control" placeholder="password confirmation" "type=password" name="confirm"/>
+										<input class="form-control" placeholder="password confirmation" type="password" name="confirm"/>
 									</div>
 									<div class="checkbox">
 										<label>

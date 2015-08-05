@@ -11,7 +11,7 @@ include('common.php');
 		}
 		else
 		{
-			mysql_connect("localhost","root","");
+			mysql_connect("localhost","root",'');
 			mysql_select_db("amazon_suggestion");
                         mysql_query("set names 'gbk'");
                         $encryped = pwd_hash($psw);
@@ -25,7 +25,7 @@ include('common.php');
 				$_SESSION['userid'] = $row[0];  
 				$_SESSION['email'] = $row[1];  
 				$_SESSION['is_admin'] = $row[2];  
-				header("Location:my.php");
+				header("Location:index.html");
 				echo $row[0];
 			}
 			else

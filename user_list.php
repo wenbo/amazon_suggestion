@@ -1,4 +1,3 @@
-<?php error_reporting(E_ALL & ~E_NOTICE);?>
 <!DOCTYPE html>
 <!-- saved from url=(0075)http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/pages/login.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -34,41 +33,27 @@
 
 	<body>
 		<?php
-			 //注销登录
-			 if($_GET['action'] == "logout"){
-			 session_start();
-			 unset($_SESSION['userid']);
-			 unset($_SESSION['email']);
-			 unset($_SESSION['is_admin']);
-			 exit;
-			 }
+			 //
+			 include('conn.php');
+			 $user_query = mysql_query("select id,email from users; ");
+
 			 ?>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">
 					<div class="login-panel panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Please Sign In</h3>
-						</div>
 						<div class="panel-body">
-							<form role="form" action="logincheck.php" method=
-										"post">
-								<fieldset>
-									<div class="form-group">
-										<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="">
-									</div>
-									<div class="form-group">
-										<input class="form-control" placeholder="Password" name="password" type="password" value="">
-									</div>
-									<div class="checkbox">
-										<label>
-											<input name="remember" type="checkbox" value="Remember Me">Remember Me
-										</label>
-									</div>
-									<!-- Change this to a button or input when using this as a form -->
-									<input class="btn btn-lg btn-success btn-block" type="submit" name="submit" value="Login">
-								</fieldset>
-							</form>
+							<table class="table table-striped">
+								<thead>
+									<tr role="row"><th>Email</th><th>Operation</th></tr>
+								</thead>
+								<?php
+									 while($row=mysql_fetch_array($user_query))
+									 {
+										 echo "<tr id='user_$row[0]'><td>".$row[1]."</td><td><a href='javascript:delete_resource($row[0])';>Delete</a></td></tr>";
+									 }
+									 ?>
+							</table> 
 						</div>
 					</div>
 				</div>
@@ -86,5 +71,7 @@
 
 		<!-- Custom Theme JavaScript -->
 		<script src="./login_files/sb-admin-2.js"></script>
+		<script src="./login_files/main.js"></script>
+
 	</body>
 </html>
