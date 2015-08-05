@@ -33,7 +33,11 @@
 
 	<body>
 		<?php
-			 //
+			 //only admin could visit this page
+ session_start();
+	 if($_SESSION['is_admin'] != 1){
+		 header("Location:login.php");
+	 }
 			 include('conn.php');
 			 $user_query = mysql_query("select id,email from users; ");
 

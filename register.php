@@ -31,6 +31,12 @@
 
 	</head>
 	<body>
+<?php
+ session_start();
+	 if($_SESSION['is_admin'] != 1){
+		 header("Location:login.php");
+	 }
+?>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">
