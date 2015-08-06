@@ -30,35 +30,36 @@
 				<![endif]-->
 
 	</head>
-
 	<body>
-		<?php
-			 //only admin could visit this page
+<?php
  session_start();
-	 if($_SESSION['is_admin'] != 1){
+	 if(!$_SESSION['email']){
 		 header("Location:login.php");
 	 }
-			 include('conn.php');
-			 $user_query = mysql_query("select id,email,is_admin from users; ");
-
-			 ?>
+?>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">
 					<div class="login-panel panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Change password</h3>
+						</div>
 						<div class="panel-body">
-							<table class="table table-striped">
-								<thead>
-									<tr role="row"><th>Email</th><th>Is admin?</th><th>Operation</th></tr>
-								</thead>
-								<?php
-									 while($row=mysql_fetch_array($user_query))
-									 {
-                     $admin_or_not = ($row[2] == 1 ? "YES" : "NO");
-										 echo "<tr id='user_$row[0]'><td>".$row[1]."</td><td>$admin_or_not</td><td><a href='javascript:delete_resource($row[0])';>Delete</a></td></tr>";
-									 }
-									 ?>
-							</table> 
+							<form role="form" action="change_password_check.php" method="post">
+								<fieldset>
+						<div class="form-group">
+										<input class="form-control" placeholder="old password" type="password" name="old_password"/>
+									</div>
+			
+									<div class="form-group">
+										<input class="form-control" placeholder="password" type="password" name="password"/>
+									</div>
+									<div class="form-group">
+										<input class="form-control" placeholder="password confirmation" type="password" name="confirm"/>
+									</div>
+									<input class="btn btn-lg btn-success btn-block" type="Submit" name="Submit" value="Submit"/>
+								</fieldset>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -76,7 +77,5 @@
 
 		<!-- Custom Theme JavaScript -->
 		<script src="./login_files/sb-admin-2.js"></script>
-		<script src="./login_files/main.js"></script>
-
 	</body>
 </html>

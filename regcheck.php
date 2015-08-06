@@ -12,7 +12,9 @@ include('common.php');
 		$email = $_POST["email"];
 		$psw = $_POST["password"];
 		$psw_confirm = $_POST["confirm"];
-                $is_admin = $_POST["is_admin"];
+		$is_admin = $_POST["is_admin"];
+		if($is_admin != "1")
+			$is_admin = "0"; // not a admin
 		if($email == "" || $psw == "" || $psw_confirm == "")
 		{
 			echo "<script>alert('请确认信息完整性！'); history.go(-1);</script>";
@@ -34,7 +36,7 @@ include('common.php');
 				else	//不存在当前注册用户名称
 				{
 					$encryped = pwd_hash($psw);
-                                        $sql_insert = "insert into users (email,password,is_admin) values('$_POST[email]','$encryped','$is_admin')";
+					$sql_insert = "insert into users (email,password,is_admin) values('$_POST[email]','$encryped','$is_admin')";
 					$res_insert = mysql_query($sql_insert);
 					//$num_insert = mysql_num_rows($res_insert);
 					if($res_insert)
