@@ -59,6 +59,7 @@
 									 }
 									 ?>
 							</table> 
+							<a style="float:right" class='btn btn-success' href='register.php'>Register</a>
 						</div>
 					</div>
 				</div>
