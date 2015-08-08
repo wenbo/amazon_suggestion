@@ -23,9 +23,7 @@ include('common.php');
 		{
 			if($psw == $psw_confirm)
 			{
-				mysql_connect("localhost","root","");	//连接数据库
-				mysql_select_db("amazon_suggestion");	//选择数据库
-				mysql_query("set names 'gdk'");	//设定字符集
+				include("conn.php");
 				$sql = "select email from users where email = '$_POST[email]'";	//SQL语句
 				$result = mysql_query($sql);	//执行SQL语句
 				$num = mysql_num_rows($result);	//统计执行结果影响的行数
