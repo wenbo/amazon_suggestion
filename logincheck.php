@@ -11,11 +11,9 @@ include('common.php');
 		}
 		else
 		{
-			mysql_connect("localhost","root",'');
-			mysql_select_db("amazon_suggestion");
-                        mysql_query("set names 'gbk'");
-                        $encryped = pwd_hash($psw);
-                        $sql = "select id,email,is_admin from users where email = '$_POST[email]' and password = '$encryped'";
+			include("conn.php");
+			$encryped = pwd_hash($psw);
+			$sql = "select id,email,is_admin from users where email = '$_POST[email]' and password = '$encryped'";
 			$result = mysql_query($sql);
 			$num = mysql_num_rows($result);
 			if($num)
@@ -30,7 +28,7 @@ include('common.php');
 			}
 			else
 			{
-				echo "<script>alert('用户名或密码不正确！');</script>";
+				echo "<script>alert('用户名或密码不正确！');history.go(-1);</script>";
 			}
 		}
 	}
