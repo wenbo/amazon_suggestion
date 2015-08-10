@@ -19,12 +19,20 @@ include('common.php');
 			if($num)
 			{
 				$row = mysql_fetch_array($result);	//将数据以索引方式储存在数组中 usernmae
-				session_start(); 
-				$_SESSION['userid'] = $row[0];  
-				$_SESSION['email'] = $row[1];  
-				$_SESSION['is_admin'] = $row[2];  
-				header("Location:index.html");
-				echo $row[0];
+				$ip = $_SERVER["REMOTE_ADDR"];
+				date_default_timezone_set('Asia/Shanghai'); 
+				$time_now = date("Y-m-d H:i:s",time());
+				$sql_update = "update users set ip = '$ip', updated_at = '$time_now' where id = $row[0]";
+				$res_update = mysql_query($sql_update);
+				if($res_update)
+					{
+						session_start(); 
+						$_SESSION['userid'] = $row[0];  
+						$_SESSION['email'] = $row[1];  
+						$_SESSION['is_admin'] = $row[2];  
+						header("Location:index.html");
+					}
+				/* echo $sql_update; */
 			}
 			else
 			{

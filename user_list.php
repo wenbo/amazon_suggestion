@@ -39,23 +39,23 @@
 		 header("Location:login.php");
 	 }
 			 include('conn.php');
-			 $user_query = mysql_query("select id,email,is_admin from users; ");
+			 $user_query = mysql_query("select id,email,is_admin,ip,updated_at from users; ");
 
 			 ?>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4 col-md-offset-4">
+				<div class="col-md-4" style="width:60%;margin-left:20%;">
 					<div class="login-panel panel panel-default">
 						<div class="panel-body">
 							<table class="table table-striped">
 								<thead>
-									<tr role="row"><th>Email</th><th>Is admin?</th><th>Operation</th></tr>
+									<tr role="row"><th>Email</th><th>Is admin?</th><th>IP</th><th>Updated At</th><th>Operation</th></tr>
 								</thead>
 								<?php
 									 while($row=mysql_fetch_array($user_query))
 									 {
                      $admin_or_not = ($row[2] == 1 ? "YES" : "NO");
-										 echo "<tr id='user_$row[0]'><td>".$row[1]."</td><td>$admin_or_not</td><td><a href='javascript:delete_resource($row[0])';>Delete</a></td></tr>";
+										 echo "<tr id='user_$row[0]'><td>".$row[1]."</td><td>$admin_or_not</td><td>$row[3]</td><td>$row[4]</td><td><a href='javascript:delete_resource($row[0])';>Delete</a></td></tr>";
 									 }
 									 ?>
 							</table> 

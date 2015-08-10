@@ -31,7 +31,8 @@ include('common.php');
 				{
 					$new_encryped = pwd_hash($psw);	//
 					
-					$id = mysql_fetch_array($result)[0];
+					$id = mysql_fetch_array($result); //[0];
+					$id = $id[0];
 					
 					$sql_update = "update  users  SET password='$new_encryped' where id = '$id' ";
 
